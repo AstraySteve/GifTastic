@@ -5,7 +5,7 @@
 */
 //Global Variables
 var APIKEY = "&api_key=V6MIkHhjl9BLPayiWYXlTRldvlrW2fpn"; //My own APIKey 
-var topics = ["Final Fantasy", "Tera Online", "Mario Kart", "Metal Gear Solid", "Pokemon", "Fate Grand Order", "Overwatch", "Command and Conquer"]; //Array of strings, each element related to the topic: Games
+var topics = ["Final Fantasy", "Tera Online", "Mario Kart", "Metal Gear Solid", "Pokemon", "Fate Grand Order", "Overwatch", "Command and Conquer", "Initial D"]; //Array of strings, each element related to the topic: Games
 
 //Functions
 function displayGIF() {
