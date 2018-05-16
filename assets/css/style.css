@@ -4,18 +4,32 @@
     UofT SCS Coding Bootcamp
 */
 
+body{
+    font-family: 'EB Garamond', 'Times New Roman', Times, serif;
+}
+
+p{
+    margin-bottom: 0rem;
+}
+
 .gif-container{
     text-align: center;
+    border-top: 4px ridge gray;
 }
 
 .gif{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
     width: 100%;
-    max-height: 400px;
+    max-height: 300px;
     object-fit: cover;
 }
 
 #mainHeader{
     text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+    padding: 1rem;
 }
 
 #mastHead{

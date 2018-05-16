@@ -33,7 +33,7 @@ function displayGIF() {
             var gifStill = results[i].images.fixed_height_still.url;
             var rating = results[i].rating;
 
-            var gifDiv = $("<div class='gif-container col-sm-4'>");
+            var gifDiv = $("<div class='gif-container col-sm-4 my-2'>");
             var p = $("<p>").text("Rating: " + rating);
             var gameImage =$("<img>");
             gameImage.attr({
@@ -45,8 +45,8 @@ function displayGIF() {
                 class: "gif",
             });
 
-            gifDiv.append(gameImage);
             gifDiv.append(p);
+            gifDiv.append(gameImage);
             $("#display-view").append(gifDiv);
 
             //DEBUG CODE
