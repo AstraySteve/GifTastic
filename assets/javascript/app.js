@@ -6,15 +6,25 @@
 //Global Variables
 var APIKEY = "&api_key=V6MIkHhjl9BLPayiWYXlTRldvlrW2fpn"; //My own APIKey 
 var topics = ["Final Fantasy", "Tera Online", "Mario Kart", "Metal Gear Solid", "Pokemon", "Fate Grand Order", "Overwatch", "Command and Conquer", "Initial D"]; //Array of strings, each element related to the topic: Games
+var limit = 10;
 
 //Functions
-function displayGIF() {
+function displayGIF(topic) {
     //variables to build and hold queryURL
-    var topic = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + APIKEY + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + APIKEY + "&limit=" + limit;
     
     //DEBUG CODE
-    console.log(topic);
+    //console.log(topic);
+
+    $("#show-more").empty()
+    var newButton = $("<button>");
+    newButton.attr({
+        class: "btn btn-secondary",
+        id: "moreGif",
+        "data-name": topic,
+    });
+    newButton.text("Show More");
+    $("#show-more").append(newButton);
     
     //Create AJAX call
     $.ajax({
@@ -22,7 +32,7 @@ function displayGIF() {
         method: "GET"
     }).then(function(response){
         //DEBUG CODE
-        console.log(response);
+        //console.log(response);
 
         var results = response.data;
         $("#display-view").empty();
@@ -76,8 +86,6 @@ function renderButtons (){
 
 //MAIN
 $(document).ready(function() {
-    //DEBUG REMOVE WHEN DONE
-    //displayGIF();
 
     //Click event for submit button to add to topic array
     $("#add-game").on("click", function(event) {
@@ -88,7 +96,11 @@ $(document).ready(function() {
     });
 
     //Click event for topics buttons
-    $("#buttons-view").on("click", ".topic-buttons", displayGIF);
+    $("#buttons-view").on("click", ".topic-buttons", function(){
+        limit = 10;
+        var topic = $(this).attr("data-name");
+        displayGIF(topic);
+    });
 
     //Click event for pausing and running gifs
     $("#display-view").on("click",".gif", function(){
@@ -101,6 +113,13 @@ $(document).ready(function() {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still")
         }
+    });
+
+    //Click event for showing more gifs
+    $("#show-more").on("click", "#moreGif", function(){
+        limit += 10;
+        var topic = $(this).attr("data-name");
+        displayGIF(topic);
     });
 
     // Calling the renderButtons function to display the intial buttons
