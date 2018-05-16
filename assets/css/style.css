@@ -3,3 +3,21 @@
     Assignment 6, 2018
     UofT SCS Coding Bootcamp
 */
+
+.gif-container{
+    text-align: center;
+}
+
+.gif{
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+#mainHeader{
+    text-align: center;
+}
+
+#mastHead{
+    background-color: #e3f2fd;
+}

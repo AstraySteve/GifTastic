@@ -5,7 +5,7 @@
 */
 //Global Variables
 var APIKEY = "&api_key=V6MIkHhjl9BLPayiWYXlTRldvlrW2fpn"; //My own APIKey 
-var topics = ["Final Fantasy", "Tera Online", "Mario Kart"]; //Array of strings, each element related to the topic: Games
+var topics = ["Final Fantasy", "Tera Online", "Mario Kart", "Metal Gear Solid", "Pokemon", "Fate Grand Order", "Overwatch", "Command and Conquer"]; //Array of strings, each element related to the topic: Games
 
 //Functions
 function displayGIF() {
@@ -25,15 +25,15 @@ function displayGIF() {
         console.log(response);
 
         var results = response.data;
+        $("#display-view").empty();
+
         for (var i=0; i<results.length; i++){
             //Setting variables for ease of use
             var gifSource = results[i].images.fixed_height.url;
             var gifStill = results[i].images.fixed_height_still.url;
             var rating = results[i].rating;
 
-            //TODO: build a div container for the gifs and append them to a display container
-            var gifDiv = $("<div class='gif-container'>");
-
+            var gifDiv = $("<div class='gif-container col-sm-4'>");
             var p = $("<p>").text("Rating: " + rating);
             var gameImage =$("<img>");
             gameImage.attr({
@@ -66,7 +66,7 @@ function renderButtons (){
     for (var i=0; i< topics.length; i++){
         var newButton = $("<button>");
         newButton.attr({
-            class: "topic-buttons", //TODO give class name to buttons
+            class: "topic-buttons btn btn-light btn-sm mr-1 mb-1",
             "data-name": topics[i],
         });
         newButton.text(topics[i]);

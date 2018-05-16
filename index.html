@@ -20,19 +20,38 @@
         <title>GIFTASTIC</title>
     </head>
     <body>
-        <!-- Rendered buttons will get dumped here -->
-        <div id="buttons-view"></div>
-        
-        <!--input form form-->
-        <form id="game-form">
-            <label for="game-input">Add a Game</label><br>
-            <input type="text" id="game-input"><br>
-            <!-- Button triggers new movie to be added -->
-            <input id="add-game" type="submit" value="Add a Game">
-        </form>
+        <header id="mastHead" class="mb-2">
+            <h1 id="mainHeader">GIFTASTIC</h1>
+            <!--input form form-->
+            <form id="game-form">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-lg-8">
+                        <input class="form-control" type="text" id="game-input" placeholder="Add a game">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <!-- Button triggers new movie to be added -->
+                    <input class="btn my-2" id="add-game" type="submit" value="Add Topic">
+                </div>
+            </form>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid justify-content-center">
+                    <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#topicContent" aria-controls="topicContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="topicContent">
+                        <!-- Rendered buttons will get dumped here -->
+                        <div id="buttons-view"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
         <!--Display Gifs-->
-        <div id="display-view"></div>
+        <div class="container-fluid">
+            <div id="display-view" class="row"></div>
+        </div>
+        
 
         <!--Javascript-->
         <script type="text/javascript" src="assets/javascript/app.js"></script>
