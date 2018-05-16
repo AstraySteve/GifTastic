@@ -20,19 +20,25 @@
         <title>GIFTASTIC</title>
     </head>
     <body>
-
-        <!-- Rendered buttons will get dumped here  -->
+        <!-- Rendered buttons will get dumped here -->
         <div id="buttons-view"></div>
         
-        <!--TEMP HTML, REFINEMENT NEEDED-->
-        <form id="movie-form">
-            <label for="movie-input">Add a Movie Bro</label><br>
-            <input type="text" id="movie-input"><br>
+        <!--input form form-->
+        <form id="game-form">
+            <label for="game-input">Add a Game</label><br>
+            <input type="text" id="game-input"><br>
             <!-- Button triggers new movie to be added -->
-            <input id="add-movie" type="submit" value="Add a Movie Bro">
+            <input id="add-game" type="submit" value="Add a Game">
         </form>
+
+        <!--Display Gifs-->
+        <div id="display-view"></div>
 
         <!--Javascript-->
         <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     </body>
 </html>

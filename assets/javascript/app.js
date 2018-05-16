@@ -5,15 +5,16 @@
 */
 //Global Variables
 var APIKEY = "&api_key=V6MIkHhjl9BLPayiWYXlTRldvlrW2fpn"; //My own APIKey 
-var topics = ["test1", "test2", "tessa"]; //Array of strings, each element related to the topic: 
+var topics = ["Final Fantasy", "Tera Online", "Mario Kart"]; //Array of strings, each element related to the topic: Games
+
 //Functions
-const displayGIF = () => {
+function displayGIF() {
     //variables to build and hold queryURL
     var topic = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + APIKEY + "&limit=10";
     
     //DEBUG CODE
-    console.log(queryURL);
+    console.log(topic);
     
     //Create AJAX call
     $.ajax({
@@ -23,19 +24,49 @@ const displayGIF = () => {
         //DEBUG CODE
         console.log(response);
 
-        //TODO: grab images and displays them accordingly
+        var results = response.data;
+        for (var i=0; i<results.length; i++){
+            //Setting variables for ease of use
+            var gifSource = results[i].images.fixed_height.url;
+            var gifStill = results[i].images.fixed_height_still.url;
+            var rating = results[i].rating;
+
+            //TODO: build a div container for the gifs and append them to a display container
+            var gifDiv = $("<div class='gif-container'>");
+
+            var p = $("<p>").text("Rating: " + rating);
+            var gameImage =$("<img>");
+            gameImage.attr({
+                src: gifStill,
+                alt: "gif-Image",
+                "data-still": gifStill,
+                "data-animate": gifSource,
+                "data-state": "still",
+                class: "gif",
+            });
+
+            gifDiv.append(gameImage);
+            gifDiv.append(p);
+            $("#display-view").append(gifDiv);
+
+            //DEBUG CODE
+            /*console.log(gifSource);
+            console.log(gifStill);
+            console.log(rating);
+            console.log("-----------------");*/
+        }
     });
 }
 
-const renderButtons = () => {
+function renderButtons (){
     //TODO render buttons from topic array
     //deletes buttons prior to generating new ones to prevent repeats
-    $("#butons-view").empty();
+    $("#buttons-view").empty();
 
     for (var i=0; i< topics.length; i++){
         var newButton = $("<button>");
         newButton.attr({
-            class: "",
+            class: "topic-buttons", //TODO give class name to buttons
             "data-name": topics[i],
         });
         newButton.text(topics[i]);
@@ -45,9 +76,32 @@ const renderButtons = () => {
 
 //MAIN
 $(document).ready(function() {
-    displayGIF();  //DEBUG REMOVE WHEN DONE
+    //DEBUG REMOVE WHEN DONE
+    //displayGIF();
 
-    //TODO Button Click event for submit button
+    //Click event for submit button to add to topic array
+    $("#add-game").on("click", function(event) {
+        event.preventDefault();
+        var topic = $("#game-input").val().trim();
+        topics.push(topic);
+        renderButtons();
+    });
+
+    //Click event for topics buttons
+    $("#buttons-view").on("click", ".topic-buttons", displayGIF);
+
+    //Click event for pausing and running gifs
+    $("#display-view").on("click",".gif", function(){
+        var state = $(this).attr("data-state");
+        if (state == "still"){
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate")
+        }
+        else if(state == "animate"){
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still")
+        }
+    });
 
     // Calling the renderButtons function to display the intial buttons
     renderButtons();
