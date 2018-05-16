@@ -69,7 +69,6 @@ function displayGIF(topic) {
 }
 
 function renderButtons (){
-    //TODO render buttons from topic array
     //deletes buttons prior to generating new ones to prevent repeats
     $("#buttons-view").empty();
 
